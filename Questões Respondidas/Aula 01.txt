@@ -1,4 +1,6 @@
 1. O que são sistemas embarcados?
+
+     É uma combinação de hardware e software, projetado para realizar determinadas tarefas específicas. Pode ter seu sistema microprocessado totalmente dedicado para algum tipo de função. Ele pode ou não fszer parte de um sistema mais complexo.
   
 2. O que são sistemas microprocesssados?
   

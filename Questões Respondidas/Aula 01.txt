@@ -5,13 +5,23 @@
 2. O que são sistemas microprocesssados?
   
 3. Apresente aplicações de sistemas embarcados: 
-(a) Para a indústria automotiva; 
+(a) Para a indústria automotiva;
+
+     Comando de bordo, sistema de freios (ABS), tela iterativa para configuração do painel e do rádio.
   
 (b) Para eletrodomésticos;
+
+     Painel de micro-ondas, painel de configuração de refrigeradores (geladeiras e freezers mais modernos), paineis de fornos..
   
 (c) Para automação idndustrial.
 
+     Controle de imulinação e controle de temperatura dos ambientes internos, painéis de vigilância (sistema de segurança, como câmeras e alarmes)..
+
 4. Cite arquiteturas possíveis e as diferenças entre elas.
+
+     Arquitetura de Von Neumann: uma aruqitetura mais simples, que permite que a máquina digital armazene os programas e seus dados no mesmo espaço de memória, porém não permite o acesso de ambos simultaneamnete, fazendo com que seja lento em comparação com outras arquiteturas. Ela é geralmente uma arquitetura CISC.
+
+     Arquitetura de Harvard: arquitetura mais complexa, na qual também permite que os programas e seus dados sejam armazenados no mesmo espaço de memória, porém ele permite o acesso simultânoe deles, fazendo com que seja mais rápido. Ela geralmente é do tipo RISC.
 
 5. Por que usamos o Raspberry Pi na disciplina, ao invés de outro system-on-chip?
 

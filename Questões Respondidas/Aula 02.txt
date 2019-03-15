@@ -2,9 +2,11 @@
 
 2. O que são daemons?
 
-  São tipos especiais de usuários, criados para determinadas funções e com determinadas permissões.
+  São tipos especiais "programas", criados para realizar o controle de algum serviço provido do próprio sistema.
 
 3. O que é o shell?
+
+  é uma interface de usuário para acessar os serviços de um sistema operacional, como por exemplo o terminal (no caso do Linux e do Mac) e a prompt de comando (no caso do Windows).
 
 4. Por que é importante evitar executar o terminal como super-usuário?
 

@@ -2,46 +2,83 @@
 
 2. O que são daemons?
 
+  São tipos especiais de usuários, criados para determinadas funções e com determinadas permissões.
+
 3. O que é o shell?
 
 4. Por que é importante evitar executar o terminal como super-usuário?
 
 5. Qual botão do teclado completa o que o usuário escreve no terminal, de acordo com o contexto?
 
+  Tecla TAB.
+
 6. Quais botões do teclado apresentam instruções escritas anteriormente?
+
+  As setas (para cima e para baixo).
 
 7. Apresente os respectivos comandos no terminal para:
 (a) Obter mais informações sobre um comando. 
 
+ 
+
 (b) Apresentar uma lista com os arquivos dentro de uma pasta.
+
+  Comando "ls": Lista os aquivos.
+  Comando "ls -l": Mostra a quantidade de arquivos, lista eles e também mostra 
 
 (c) Apresentar o caminho completo da pasta. 
 
-(d) Trocar de pasta. 
+  Comando "pwd".
+
+(d) Trocar de pasta.
+
+  Comando "cd" seguido do nome da pasta de destino.
 
 (e) Criar uma pasta. 
 
+  Comando "mkdir" seguido do nome da pasta.
+
 (f) Apagar arquivos definitivamente. 
+
+  Comando "rm" seguido do nome do arquivo.
 
 (g) Apagar pastas definitivamente. 
 
+  Comando "rm -r", seguido do nome da pasta.
+
 (h) Copiar arquivos. 
 
-(i) Copiar pastas. 
+  Comando "cp".
 
-(j) Mover arquivos. 
+(i) Copiar pastas.
+
+  Comando "cp -r", seguido do nome da pasta e o destino da cópia, respectivamente.
+
+(j) Mover arquivos.
+
+  Comando "mv", seguido do nome do arquivo e da pasta de destino, respectivamente.
 
 (k) Mover pastas. 
+
+  Comando "mv -r", seguido do nome da pasta e do destino, respectivamente.
 
 (l) Renomear pastas. 
 
 (m) Apresentar o conteúdo de um arquivo. 
 
+  Comando "cat", seguido do nome do arquivo.
+
 (n) Apresentar o tipo de um arquivo. 
+
+  Comando "file", seguido do nome do arquivo.
 
 (o) Limpar a tela do terminal. 
 
+  Comando "clear".
+
 (p) Encontrar ocorrências de palavras-chave em um arquivo-texto. 
+
+  Comando "grep", seguido da palavra-chave e do arquivo-texto, respectivamente.
 
 (q) Ordenar informações em um arquivo-texto. 
 
@@ -51,3 +88,4 @@
 
 (t) Escrever algo na tela.
 
+Comando "echo".

@@ -44,4 +44,6 @@
 
 (e) Quais bibliotecas devem ser incluídas no código para poder utilizar as funções acima?
 
-  
+  #include <fcntl.h>	// Para a funcao open()
+  #include <unistd.h>	// Para a funcao close()
+  #include <stdlib.h>	// Para a função exit()

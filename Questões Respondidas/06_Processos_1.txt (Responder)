@@ -2,6 +2,8 @@
 
 (a) Mostrar todos os processos rodando na máquina?
 
+  No terminal, usar o seguinte comando: "ps -e".
+
 (b) Mostrar os processos de um usuário?
 
 (c) Ordenar todos os processos de acordo com o uso da CPU?

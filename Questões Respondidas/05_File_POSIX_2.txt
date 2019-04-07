@@ -33,7 +33,38 @@ $ cat Eu.txt
 $ Nome: Eu
 $ Idade: 30 anos
 
+	#include <stdio.h>
+	#include <fcntl.h>	// Para a funcao open()
+	#include <unistd.h>	// Para a funcao close()
+	#include <stdlib.h>	// Para a função exit()
+	#include <string.h>
 
+	int main(int argc, char const *argv[])
+	{
+		int fp;
+		int idade;
+		char nome[10];
+
+		printf("Digite seu nome: ");
+		scanf("%s", nome);
+		printf("Digite sua idade: ");
+		scanf("%d", &idade);
+
+		fp = open(nome, O_RDWR | O_CREAT);
+
+		if(fp == -1)
+		{
+			printf("Erro ao criar arquivo!!\n");
+			exit(0);
+		}
+		printf("Arquivo criado com sucesso!!\n");
+
+		write(fp, nome, 12*sizeof(char));
+		write(fp, &idade, sizeof(int));
+
+		close(fp);
+		return 0;
+	}
 ---------------------------------------------------------------------------------------------------------------------------------
 3. Crie um código em C que recebe o nome do usuário e e sua idade como argumentos de entrada (usando as variáveis argc e *argv[]), e escreve este conteúdo em um arquivo com o seu nome e extensão '.txt'. Por exemplo, considerando que o código criado recebeu o nome de 'ola_usuario_2':
 

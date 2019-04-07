@@ -72,6 +72,34 @@ $ ./ola_usuario_2 Eu 30
 $ cat Eu.txt
 $ Nome: Eu
 $ Idade: 30 anos
+
+	#include <stdio.h>
+	#include <fcntl.h>	// Para a funcao open()
+	#include <unistd.h>	// Para a funcao close()
+	#include <stdlib.h>	// Para a função exit()
+	#include <string.h>
+
+	int main(int argc, char const *argv[])
+	{
+		int fp;
+
+		fp = open(argv[1], O_RDWR | O_CREAT);
+
+		if(fp == -1)
+		{
+			printf("Erro ao criar arquivo!!\n");
+			exit(0);
+		}
+		printf("Arquivo criado com sucesso!!\n");
+
+		write(fp, argv[1], strlen(argv[1]));
+		printf("\n");
+		write(fp, argv[2], sizeof(int));
+		printf("\n");
+
+		close(fp);
+		return 0;
+	}
 ---------------------------------------------------------------------------------------------------------------------------------
 4. Crie uma função que retorna o tamanho de um arquivo, usando o seguinte protótipo: int tam_arq_texto(char *nome_arquivo); Salve esta função em um arquivo separado chamado 'bib_arqs.c'. Salve o protótipo em um arquivo chamado 'bib_arqs.h'. Compile 'bib_arqs.c' para gerar o objeto 'bib_arqs.o'.
 ---------------------------------------------------------------------------------------------------------------------------------

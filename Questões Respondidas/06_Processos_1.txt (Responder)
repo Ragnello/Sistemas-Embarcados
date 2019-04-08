@@ -6,9 +6,16 @@
 
 (b) Mostrar os processos de um usuário?
 
+  No terminal, usar o seguinte comando: "ps -u <nome do usuário>".
+
 (c) Ordenar todos os processos de acordo com o uso da CPU?
 
+   No terminal, usar o seguinte comando: "ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head".
+
 (d) Mostrar a quanto tempo cada processo está rodando?
+
+  No terminal, usar o seguinte comando: "ps -u alunos kstart_time".
+
 -------------------------------------------------------------------------------------------------------------------------------
 2. De onde vem o nome fork()?
 -------------------------------------------------------------------------------------------------------------------------------
@@ -16,7 +23,12 @@
 
 (a) system()?
 
+  Vantagens: Permite a utilização de comandos do shell direto na programação, criando um processo-filho.
+  Desvantagens: Depende bastante do sistema, fazendo com que abram brechas para falhas de execução.
+
 (b) fork() e exec()?
+
+  Vantagens: Não permite a criação direta em um unico passo de um processo-filho.
 -------------------------------------------------------------------------------------------------------------------------------
 4. É possível utilizar o exec() sem executar o fork() antes?
 -------------------------------------------------------------------------------------------------------------------------------

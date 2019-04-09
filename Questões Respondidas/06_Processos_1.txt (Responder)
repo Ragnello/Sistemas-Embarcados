@@ -23,12 +23,13 @@
 
 (a) system()?
 
-  Vantagens: Permite a utilização de comandos do shell direto na programação, criando um processo-filho.
+  Vantagens: Permite a utilização de comandos do shell direto na programação e cria um processo-filho de forma direta.
   Desvantagens: Depende bastante do sistema, fazendo com que abram brechas para falhas de execução.
 
 (b) fork() e exec()?
 
-  Vantagens: Não permite a criação direta em um unico passo de um processo-filho.
+  Vantagens: O processo-pai e o processo-filho continuam executando normalmente, pois o PC é igual. Também se uma identificação melhor dos processos, utilizando a função getpid().
+  Desvantagens: Não permite a criação direta em um unico passo de um processo-filho.
 -------------------------------------------------------------------------------------------------------------------------------
 4. É possível utilizar o exec() sem executar o fork() antes?
 -------------------------------------------------------------------------------------------------------------------------------
@@ -36,12 +37,24 @@
 
 (a) execp()?
 
+  Aceita que o nome ou procura do programa estejam no current path.
+
 (b) execv()?
+
+  Permite que seja aceita uma lista nula como entrada.
 
 (c) exece()?
 
+  Aceita um argumento adicional.
+
 (d) execvp()?
+
+  Junção dos sois primeiros, ou seja, não  necessario colocar o caminho completo para procurar o programa e aceita uma lista com argumentos nulos como entrada.
 
 (e) execve()?
 
+  Permite uma lista com argumentos nulos como entrada e tambem aceita um argumento adicional na chamada.
+
 (f) execle()?
+
+  Permite um argumento adicional e tambem permite a utilização de mecanismos var args em programas com linguagem C.

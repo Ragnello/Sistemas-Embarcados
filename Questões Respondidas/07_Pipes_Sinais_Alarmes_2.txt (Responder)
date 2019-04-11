@@ -14,6 +14,72 @@ FILHO1: Quando o vento passa, é a bandeira que se move.
 FILHO2: Não, é o vento que se move.
 PAI: Os dois se enganam. É a mente dos senhores que se move.
 Neste exercício, quem recebe a mensagem via pipe é quem as escreve no terminal.
+
+######################## CÓDIGO DE RESPOSTA #########################
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+#define TAM 100
+
+int main(int argc, char *argv[])
+{
+   int i, pid_filho, status_pai = 0;
+   int fd[2];
+   char msg_filho1[TAM];
+   char msg_filho2[TAM];
+   char msg_pai[TAM];
+   char buffer_filho1[TAM], buffer_filho2[TAM], buffer_pai[TAM];
+
+   pipe(fd);
+   
+   for(i = 0; i < 2; i++)
+   {
+      	pid_filho = fork();
+      	
+      	if(pid_filho == 0)
+      	{
+      		if(i == 0)
+      		{
+      			sprintf(msg_filho1, "Quando o vento passa, é a bandeira que se move.");
+        		write(fd[1], msg_filho1, TAM);
+        		sleep(1);
+        		return -1; //É necessário colocar esse return para que o filho nao crie mais filhos
+      		}
+      		else
+      		{
+      			read(fd[0], buffer_filho2, TAM);
+      			sprintf(msg_filho2, "Não, é o vento que se move.");
+       			write(fd[1], msg_filho2, TAM);
+        		read(fd[0], buffer_filho1, TAM);
+        		printf("FILHO 2: %s\n", buffer_filho1);
+	       		sleep(1);
+        		printf("PAI:  %s\n", buffer_filho2);
+        		return -1; //É necessário colocar esse return para que o filho nao crie mais filhos
+      		}
+
+	    	//return -1; //É necessário colocar esse return para que o filho nao crie mais filhos
+      	}
+      	else
+      	{
+      		if(status_pai == 0)
+      		{
+        		read(fd[0], buffer_pai, TAM);
+				printf("FILHO 1: %s\n", buffer_pai);
+				sprintf(msg_pai, "Os dois se enganam. É a mente dos senhores que se move.");
+				write(fd[1], msg_pai, TAM);
+				status_pai++;
+			}
+
+			wait(NULL);
+		}
+   }
+
+   return 0;
+}
 -------------------------------------------------------------------------------------------------------------------------------
 4. Crie um programa em C que cria um processo-filho e um pipe de comunicação. O processo-filho deverá pedir o nome do usuário, envia-lo para o pai via pipe, e o pai deverá escrever o nome do usuário no terminal.
 -------------------------------------------------------------------------------------------------------------------------------

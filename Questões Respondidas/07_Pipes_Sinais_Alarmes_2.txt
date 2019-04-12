@@ -7,6 +7,58 @@ PAI: Não façais nada violento, praticai somente aquilo que é justo e equilibr
 FILHO: Mas até uma criança de três anos sabe disso!
 PAI: Sim, mas é uma coisa difícil de ser praticada até mesmo por um velho como eu...
 Neste exercício, quem recebe a mensagem via pipe é quem as escreve no terminal.
+
+######################## CÓDIGO DE RESPOSTA #########################
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <unistd.h>
+#include <string.h>
+
+#define tam_str 100
+
+int main()
+{
+	int pid;
+	int fd[2];
+	pipe(fd);
+	pid = fork();
+	// Codigo do filho
+	if(pid == 0)
+	{
+		char buffer_filho[tam_str], msg_filho[tam_str];
+
+		sprintf(msg_filho, "FILHO: Pai, qual a verdadeira essência da sabedoria?");
+		write(fd[1], msg_filho, tam_str);
+		sleep(1);
+		read(fd[0], buffer_filho, tam_str);
+		printf("%s\n", buffer_filho);
+		sprintf(msg_filho, "FILHO: Mas até uma criança de três anos sabe disso!");
+		write(fd[1], msg_filho, tam_str);
+		sleep(1);
+		read(fd[0], buffer_filho, tam_str);
+		printf("%s\n", buffer_filho);
+	}
+	// Codigo do pai
+	else
+	{
+		char buffer_pai[tam_str], msg_pai[tam_str];
+
+		read(fd[0], buffer_pai, tam_str);
+		printf("%s\n", buffer_pai);
+		sprintf(msg_pai, "PAI: Não façais nada violento, praticai somente aquilo que é justo e equilibrado.");
+		write(fd[1], msg_pai, tam_str);
+		sleep(1);
+		read(fd[0], buffer_pai, tam_str);
+		printf("%s\n", buffer_pai);
+		sprintf(msg_pai, "PAI: Sim, mas é uma coisa difícil de ser praticada até mesmo por um velho como eu...");
+		write(fd[1], msg_pai, tam_str);
+		sleep(2);	
+	}
+	
+	return 0;
+}
 -------------------------------------------------------------------------------------------------------------------------------
 3. Crie um programa em C que cria dois processos-filhos e um pipe de comunicação. Utilize o pipe para executar a seguinte conversa entre processos:
 
@@ -82,5 +134,47 @@ int main(int argc, char *argv[])
 }
 -------------------------------------------------------------------------------------------------------------------------------
 4. Crie um programa em C que cria um processo-filho e um pipe de comunicação. O processo-filho deverá pedir o nome do usuário, envia-lo para o pai via pipe, e o pai deverá escrever o nome do usuário no terminal.
+
+######################## CÓDIGO DE RESPOSTA #########################
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+#define TAM 30
+
+int main(int argc, char *argv[])
+{
+  int i, pid;
+  int fd[2];
+
+  pipe(fd);
+  pid = fork();
+
+  if(pid == 0)
+  {
+    char nome[TAM];
+
+    printf("Digite seu nome: ");
+    scanf("%s", nome);
+
+    write(fd[1], nome, TAM);
+    sleep(1);
+
+  }
+  else
+  {
+    char buffer_pai[TAM];
+
+    read(fd[0], buffer_pai, TAM);
+    printf("PAI: %s\n", buffer_pai);
+    sleep(1);
+  }
+
+  return 0;
+}
+
 -------------------------------------------------------------------------------------------------------------------------------
 5. Utilize o sinal de alarme para chamar a cada segundo o comando ps ordenando todos os processos de acordo com o uso da CPU. Ou seja, seu código atualizará a lista de processos a cada segundo. Além disso, o código deverá tratar o sinal do CTRL-C, escrevendo "Processo terminado!" na tela antes de terminar a execução do processo.
